@@ -1,0 +1,11 @@
+<%- include('header') %>
+
+<div class="result">
+    <% if (error){ %>
+    <%= error %>
+    <%} else {%>
+        <%= amount %> with rate: <%= rate %> equals to <%= converted %> 
+    <% } %>
+</div>
+
+<%- include('footer') %>
