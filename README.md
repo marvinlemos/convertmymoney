@@ -21,3 +21,7 @@ node index.js
 
 ## Licença
 MIT - [LICENSE.md](LICENSE.md).
+
+## Acknowledgments
+
+* Este projeto foi construído durante as aulas do Fullstack Master do [DevPleno](https://devpleno.com).
