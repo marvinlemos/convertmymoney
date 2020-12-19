@@ -1,3 +1,5 @@
+![Preview](https://github.com/marvinlemos/convertmymoney/blob/master/public/images/logo.png?raw=true)
+
 ## Convert My Money
 This a small project to show some basic features of Node and Express framework. 
 
