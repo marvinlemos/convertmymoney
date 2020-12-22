@@ -13,9 +13,14 @@
 </div>
 
 <script>
-    const showChart = (data) => {
-        data = JSON.parse(data);
-        console.log(data)
+    const showChart = async() => {
+        
+        console.log('oiiii')
+        const response = await fetch('/rates')
+        const dataText = await response.text()
+
+        data = JSON.parse(dataText);
+
         labels = data.map(item => item.date)
         values = data.map(item => item.rate)
 
@@ -44,11 +49,9 @@
         });
     }
 
-    fetch('/rates').then(response => {
-        response.text().then(data => {
-            showChart(data)
-        })
-    })
+    showChart()
+
+    
     
 </script>
 <%- include('footer') %>
