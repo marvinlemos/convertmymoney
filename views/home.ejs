@@ -1,9 +1,54 @@
 <%- include('header') %>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 <form method="GET" action="/exchange">
     <input name="rate" value="<%= rate %>" placeholder="US Dollar Exchange Rate"><br/>
     <input name="amount" placeholder="How much?"><br/>
     <button>Convert</button>
 </form>
 
+<div class="rateHistoryChart">
+    <canvas id="rateHistoryChart"></canvas>
+</div>
+
+<script>
+    const showChart = (data) => {
+        data = JSON.parse(data);
+        console.log(data)
+        labels = data.map(item => item.date)
+        values = data.map(item => item.rate)
+
+        var ctx = document.getElementById('rateHistoryChart').getContext('2d'); 
+        var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: values,
+                borderWidth: 1,
+                label: 'US Dollar exchange rate'
+            }]
+        },
+        options: {
+            response: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+        });
+    }
+
+    fetch('/rates').then(response => {
+        response.text().then(data => {
+            showChart(data)
+        })
+    })
+    
+</script>
 <%- include('footer') %>

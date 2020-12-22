@@ -26,3 +26,8 @@ button{
     border: 1px solid #d8d8d8;
     background: #fdfdfd;
 }
+
+.rateHistoryChart{
+    width: 400px;
+    height: 400px;
+}

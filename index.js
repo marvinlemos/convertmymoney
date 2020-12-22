@@ -16,6 +16,12 @@ app.get('/', async(req, res) => {
     })
 })
 
+app.get('/rates', async(req, res) => {
+    const rates = await apiBCB.getExchangeRateLastDays(60)
+    res.json(rates)
+    
+})
+
 app.get('/exchange', (req, res) =>{
     const {rate, amount} = req.query
     if (rate && amount){
